@@ -45,7 +45,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/pembayaran-lunas/{id}', [PembayaranController::class, 'lunas'])->name('pembayaran.lunas');
     Route::post('/pembayaran/bayar', [PembayaranController::class, 'bayar']);
     Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
-    Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
     Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
     Route::get('/pelanggaran', [PelanggaranController::class, 'index']);
     Route::post('/pelanggaran', [PelanggaranController::class, 'store']);
