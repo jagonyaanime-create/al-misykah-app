@@ -262,7 +262,14 @@
                                 </template>
                             </div>
                             <input type="file" name="bukti_bayar" required class="absolute inset-0 opacity-0 cursor-pointer"
-                                @change="const file = $event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = (e) => { preview = e.target.result; }; reader.readAsDataURL(file); }">
+                            @change="
+                                const file = $event.target.files[0]; 
+                                if (file) { 
+                                    // CARA BARU: Lebih irit RAM daripada FileReader
+                                    if (preview) URL.revokeObjectURL(preview); // Hapus memori lama
+                                    preview = URL.createObjectURL(file); 
+                                }
+                            ">
                         </div>
                         <p class="text-[9px] text-rose-500 mt-3 text-center font-bold italic">* Maks. 2MB</p>
                     </div>
