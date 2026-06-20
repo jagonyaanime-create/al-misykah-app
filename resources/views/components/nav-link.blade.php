@@ -1,16 +1,7 @@
-@props(['active', 'icon'])
-
+@props(['active'])
 @php
-// Logika untuk menentukan gaya jika menu sedang aktif atau tidak
 $classes = ($active ?? false)
-            ? 'flex items-center px-4 py-3 text-sm font-semibold text-white bg-emerald-800 border-l-4 border-yellow-400 rounded-lg shadow-inner transition-all duration-200'
-            : 'flex items-center px-4 py-3 text-sm font-medium text-emerald-100 hover:bg-emerald-800 hover:text-white rounded-lg transition-all duration-200 group';
+            ? 'inline-flex items-center px-1 pt-1 border-b-2 border-emerald-400 text-sm font-medium leading-5 text-slate-900 focus:outline-none focus:border-emerald-700 transition duration-150 ease-in-out'
+            : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-slate-500 hover:text-slate-700 hover:border-slate-300 focus:outline-none focus:text-slate-700 focus:border-slate-300 transition duration-150 ease-in-out';
 @endphp
-
-<a {{ $attributes->merge(['class' => $classes]) }}>
-    @if($icon)
-        <i class="fa-solid {{ $icon }} w-5 h-5 mr-3 transition-colors {{ $active ? 'text-yellow-400' : 'text-emerald-400 group-hover:text-white' }}"></i>
-    @endif
-    
-    <span class="truncate">{{ $slot }}</span>
-</a>
+<a {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</a>
